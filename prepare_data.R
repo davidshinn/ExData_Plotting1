@@ -22,4 +22,8 @@ if (!file.exists(DATAFILE_ABRIDGED)) {
     write.table(dt, DATAFILE_ABRIDGED,
                 row.names=FALSE, na="?",
                 sep=";")
+} else {
+    message('--- ', DATAFILE_ABRIDGED, ' already exists,')
+    message('    no action needed.  Delete ', DATAFILE_ABRIDGED)
+    message('    to force a new prepared file.')
 }
