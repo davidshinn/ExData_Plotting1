@@ -8,21 +8,19 @@ dt$datetime <- strptime(paste(dt$Date, dt$Time),
 
 draw.plots <- function() {
     par(mfrow=c(2, 2))
-    plot(x=dt$datetime, y=dt$Global_active_power,
-         type='l',
-         xlab='', ylab='Global Active Power')
-    plot(x=dt$datetime, y=dt$Voltage,
-         type='l',
-         xlab='datetime', ylab='Voltage',
-         cex.axis=0.80)
-    plot(x=dt$datetime, y=dt$Sub_metering_1,
-         type='l', col='black',
-         ylab='Energy sub metering',
-         xlab='')
-    lines(x=dt$datetime, y=dt$Sub_metering_2,
-          type='l', col='red')
-    lines(x=dt$datetime, y=dt$Sub_metering_3,
-          type='l', col='blue')
+    with(dt, plot(x=datetime, y=Global_active_power,
+                  type='l', xlab='', ylab='Global Active Power'))
+    with(dt, plot(x=datetime, y=Voltage,
+                  type='l',
+                  cex.axis=0.80))
+    with(dt, plot(x=datetime, y=Sub_metering_1,
+                  type='l', col='black',
+                  ylab='Energy sub metering',
+                  xlab=''))
+    with(dt, lines(x=datetime, y=Sub_metering_2,
+                  type='l', col='red'))
+    with(dt, lines(x=datetime, y=Sub_metering_3,
+                  type='l', col='blue'))
     legend("topright",
            col=c('black', 'red', 'blue'),
            lty=c(1, 1, 1),
